@@ -112,7 +112,7 @@ public class DisplayListener implements ActionListener {
 			System.exit(0);
 		}
 		if(e.getSource().equals(disp.getCouleurModele())){
-			Color couleur = JColorChooser.showDialog (null, "Couleur du modï¿½le", Color.BLACK);
+			Color couleur = JColorChooser.showDialog (null, "Couleur du modÃ¨le", Color.BLACK);
 			if(couleur != null){
 				disp.setColorModele(couleur);
 				disp.getGtsDisplay().setColor(couleur);
@@ -137,7 +137,7 @@ public class DisplayListener implements ActionListener {
 			if(!Figure.isMultiColore()){
 				disp.getCouleurMulti().setText("Activer le mode multicolore");
 			} else {
-				disp.getCouleurMulti().setText("Dï¿½sactiver le mode multicolore");
+				disp.getCouleurMulti().setText("DÃ©sactiver le mode multicolore");
 			}
 			disp.revalidate();
 			disp.repaint();
@@ -184,7 +184,7 @@ public class DisplayListener implements ActionListener {
 			disp.hideCtrlPannel();
 		}
 		if(e.getSource().equals(disp.getAPropos())){
-			JOptionPane.showMessageDialog(null, "Ce programme a été développé dans le cadre du projet de S3\ndu DUT informatique de l'IUT Lille A.", "A propos de : GTS Reader", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Ce programme a Ã©tÃ© dÃ©veloppÃ© dans le cadre du projet de S3\ndu DUT informatique de l'IUT Lille A.", "A propos de : GTS Reader", JOptionPane.INFORMATION_MESSAGE);
 		}
 		if(e.getSource().equals(disp.getEnregistrer())){
 			try {
@@ -203,7 +203,7 @@ public class DisplayListener implements ActionListener {
 				db.connect();
 				ResultSet rs = db.getResultOf("Select * from gts where path='"+disp.getUrl()+"';");
 				String tags = rs.getString(2);
-				tags = JOptionPane.showInputDialog("Mot clé :", tags);
+				tags = JOptionPane.showInputDialog("Mot clÃ© :", tags);
 				db.updateValue("Update gts set tags='"+tags+"' where path='"+disp.getUrl()+"';");
 				db.disconnect();
 			} catch(Exception ex){
@@ -212,7 +212,7 @@ public class DisplayListener implements ActionListener {
 		}
 		if(e.getSource().equals(disp.getRechercher())){
 			try {
-				String tags = JOptionPane.showInputDialog("Veuillez entrer un mot clé :", "");
+				String tags = JOptionPane.showInputDialog("Veuillez entrer un mot clÃ© :", "");
 				Database db = new Database();
 				db.connect();
 				ResultSet rs = db.getResultOf("Select * from gts where tags='"+tags+"';");
@@ -223,8 +223,8 @@ public class DisplayListener implements ActionListener {
 					retour += rs.getString(1)+"\n";
 				}
 				if(empty)
-					retour = "Aucun résultat";
-				JOptionPane.showMessageDialog(disp, retour, "Résultat de la recherche", JOptionPane.INFORMATION_MESSAGE);
+					retour = "Aucun rÃ©sultat";
+				JOptionPane.showMessageDialog(disp, retour, "RÃ©sultat de la recherche", JOptionPane.INFORMATION_MESSAGE);
 				db.disconnect();
 			} catch(Exception ex){
 				System.out.println(ex.getMessage());
